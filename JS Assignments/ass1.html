@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Currency Formatter</title>
+</head>
+<body>
+  <h1>Currency Formatter</h2>
+  <label for="amount"> Enter Amount:</label>
+  <input type="number" id="amount" placeholder="(e.g 174895,34567)">
+  <br><br>
+  <label for="currency"> Enter Currency Code :</label>
+  <input type="text" id="currency" placeholder="(e.g. USD, EUR, INR)">
+  <br><br>
+  <button onclick="showFormattedCurrency()">Format Currency</button>
+
+  <p id="result"></p>
+
+  <script>
+    function formatCurrency(amount, currencyCode) {
+      try {
+        const formatter = new Intl.NumberFormat(undefined, {
+          style: 'currency',
+          currency: currencyCode.toUpperCase(),
+        });
+        return formatter.format(amount);
+      } catch (error) {
+        return `Invalid currency code: ${currencyCode}`;
+      }
+    }
+
+    function showFormattedCurrency() {
+      const amount = parseFloat(document.getElementById('amount').value);
+      const currencyCode = document.getElementById('currency').value.trim();
+
+      if (isNaN(amount) || currencyCode === "") {
+        document.getElementById('result').textContent = "Please enter valid amount and currency code.";
+        return;
+      }
+
+      const result = formatCurrency(amount, currencyCode);
+      document.getElementById('result').textContent = result;
+    }
+  </script>
+
+</body>
+</html>

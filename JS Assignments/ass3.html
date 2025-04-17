@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>List Item Logging</title>
+  <style>
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Fruits List</h2>
+  <ul>
+    <li>cherry</li>
+    <li>strawberry</li>
+    <li>rasberry</li>
+    <li>blueberry</li>
+    <li>blackberry</li>
+    <li>Pinkberry</li>
+  </ul>
+
+  <script>
+    // Select all list items
+    const listItems = document.querySelectorAll('ul li');
+
+    console.log("📋 All List Items:");
+    listItems.forEach((item, index) => {
+      console.log(`Item ${index + 1}: ${item.textContent}`);
+    });
+
+    // Add 'highlight' class to every second item
+    listItems.forEach((item, index) => {
+      if ((index + 1) % 2 === 0) {
+        item.classList.add('highlight');
+      }
+    });
+
+    // Log highlighted items separately
+    console.log("✨ Highlighted Items (every 2nd):");
+    listItems.forEach((item, index) => {
+      if (item.classList.contains('highlight')) {
+        console.log(`Highlighted Item ${index + 1}: ${item.textContent}`);
+      }
+    });
+
+    // Log total number of list items
+    console.log(`🔢 Total list items: ${listItems.length}`);
+  </script>
+
+</body>
+</html>

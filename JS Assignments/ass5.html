@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conditions Check</title>
+</head>
+<body>
+  <script>
+    const person = {
+      age: 20,
+      hasLicense: true,
+      temperature: 35,
+      humidity: 80,
+      role: "admin",
+      isActive: true,
+      isStudent: true,
+      hasValidId: true,
+      enrolled: false,
+      isPremium: true,
+      subscriptionExpired: true,
+      paymentPending: false,
+      shift: "night",
+      loggedIn: false
+    };
+    const area ={
+      isRestricted:false
+    }
+
+
+   function evaluateConditions(obj,obj){
+    if (person.age > 18 && person.hasLicense) {
+      console.log("Eligible to drive.");
+    }
+    if (person.temperature > 30 || person.humidity > 70) {
+      console.log("Warning: High discomfort level.");
+    }
+    if ((person.role === "admin" || person.role === "editor") && person.isActive) {
+      console.log("Access granted.");
+    }
+    if (person.isStudent && person.hasValidId && !person.enrolled) {
+      console.log(" Please complete your enrollment.");
+    }
+    if (person.isPremium && (person.subscriptionExpired || person.paymentPending)) {
+      console.log("RE-New your premium account.");
+    }
+    if (person.shift === "night" && !person.loggedIn) {
+      console.log("Night shift worker not logged in.");
+    }
+    if (area.isRestricted && (person.role !== "admin" && person.role !== "supervisor")) {
+      console.log("Unauthorized access attempt detected.");
+    }
+  }
+  evaluateConditions(person,area);
+  </script>
+
+</body>
+</html>
